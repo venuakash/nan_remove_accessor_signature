@@ -2515,7 +2515,6 @@ inline void SetAccessor(
   , GetterCallback getter
   , SetterCallback setter = 0
   , v8::Local<v8::Value> data = v8::Local<v8::Value>()
-  , v8::AccessControl settings = v8::DEFAULT
   , v8::PropertyAttribute attribute = v8::None) {
   HandleScope scope;
 
@@ -2547,8 +2546,9 @@ inline void SetAccessor(
     , getter_
     , setter_
     , obj
-    , settings
-    , attribute
+    static_cast<v8::PropertyAttribute>(attribute),
+    v8::SideEffectType::kHasSideEffect,
+    v8::SideEffectType::kHasSideEffect
   );
 }
 
@@ -2558,7 +2558,6 @@ inline bool SetAccessor(
   , GetterCallback getter
   , SetterCallback setter = 0
   , v8::Local<v8::Value> data = v8::Local<v8::Value>()
-  , v8::AccessControl settings = v8::DEFAULT
   , v8::PropertyAttribute attribute = v8::None) {
   HandleScope scope;
 
@@ -2600,8 +2599,9 @@ inline bool SetAccessor(
     , getter_
     , setter_
     , dataobj
-    , settings
-    , attribute);
+    static_cast<v8::PropertyAttribute>(attribute),
+    v8::SideEffectType::kHasSideEffect,
+    v8::SideEffectType::kHasSideEffect);
 #endif
 }
 
