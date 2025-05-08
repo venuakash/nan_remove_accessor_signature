@@ -2547,7 +2547,6 @@ inline void SetAccessor(
     , getter_
     , setter_
     , obj
-    , settings
     , attribute
   );
 }
@@ -2592,7 +2591,6 @@ inline bool SetAccessor(
     , getter_
     , setter_
     , dataobj
-    , settings
     , attribute).FromMaybe(false);
 #else
   return obj->SetAccessor(
@@ -2600,7 +2598,6 @@ inline bool SetAccessor(
     , getter_
     , setter_
     , dataobj
-    , settings
     , attribute);
 #endif
 }
